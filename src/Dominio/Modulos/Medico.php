@@ -1,6 +1,6 @@
 <?php
 
-namespace Luizlins\Projeto01\Modulos;
+namespace Luizlins\Projeto01\Dominio\Modulos;
 
 class Medico {
 
@@ -10,6 +10,11 @@ class Medico {
         private string $nome,
         private string $especialidade
     ) {}
+
+    public function recuperarId()
+    {
+        return $this->id;
+    }
 
     public function recuperarCRM()
     {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Luizlins\Projeto01\Modulos;
+namespace Luizlins\Projeto01\Dominio\Modulos;
 
-use Luizlins\Projeto01\Modulos\Medico;
-use Luizlins\Projeto01\Modulos\Paciente;
+use Luizlins\Projeto01\Dominio\Modulos\Medico;
+use Luizlins\Projeto01\Dominio\Modulos\Paciente;
 use DateTimeImmutable;
 
 class Consulta {

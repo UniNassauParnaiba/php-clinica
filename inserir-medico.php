@@ -1,19 +1,24 @@
 <?php
 
-use Luizlins\Projeto01\Modulos\Medico;
+use Luizlins\Projeto01\Dominio\Modulos\Medico;
+use Luizlins\Projeto01\Infraestrutura\Persistencia\FabricaConexao;
 
 require_once "vendor/autoload.php";
 
-$caminhoBanco = __DIR__ . "/banco.sqlite";
-$pdo = new PDO("sqlite:$caminhoBanco");
+$pdo = FabricaConexao::criarConexao();
 
-$medico = new Medico(null, "CRM/PI 1234", "Luiz Lins", "Cardiologista");
+$medico = new Medico(4, "CRM/PI 1111", "Antonio Carlos", "Otorrino");
 
-$sqlInsert = "
-    INSERT INTO medicos
+$sqlInsert = "INSERT INTO medicos
         (id, crm, nome, especialidade)
         VALUES
-        (6, '{$medico->recuperarCRM()}', 'teste', '{$medico->recuperarEspecialidade()}'),
+        (?, ?, ?, ?);
 ";
 
-echo $pdo->exec($sqlInsert);
+$statement = $pdo->prepare($sqlInsert);
+$statement->bindValue(1, $medico->recuperarId());
+$statement->bindValue(2, $medico->recuperarCRM());
+$statement->bindValue(3, $medico->recuperarNome());
+$statement->bindValue(4, $medico->recuperarEspecialidade());
+
+echo $statement->execute();

@@ -1,6 +1,6 @@
 <?php
 
-namespace Luizlins\Projeto01\Modulos;
+namespace Luizlins\Projeto01\Dominio\Modulos;
 
 use DateTimeImmutable;
 
