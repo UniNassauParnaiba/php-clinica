@@ -5,9 +5,11 @@ use Luizlins\Projeto01\Infraestrutura\Repositorios\RepositorioMedico;
 
 require_once "vendor/autoload.php";
 
-$medico = new Medico(null, "CRM/PI 1111", "Antonio Carlos", "Otorrino");
-
 $pdoMedico = new RepositorioMedico();
-$resposta = $pdoMedico->inserir($medico);
+$resposta = $pdoMedico->listar();
 
-var_dump($resposta);
+$medico = new Medico(2, null, null, null);
+
+$pdoMedico->deletar($medico);
+
+var_dump($medico);

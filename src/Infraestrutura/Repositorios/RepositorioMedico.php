@@ -15,7 +15,6 @@ class RepositorioMedico implements RepositorioMedicoInterface
     public function __construct()
     {
         $this->conexao = FabricaConexao::criarConexao();
-
     }
 
     public function listar(): array
@@ -79,7 +78,7 @@ class RepositorioMedico implements RepositorioMedicoInterface
     public function recuperar(Medico $medico): bool
     {}
 
-    public function hidratacao(PDOStatement $stmt): array
+    private function hidratacao(PDOStatement $stmt): array
     {
         $listaDadosMedicos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $listaMedicos = [];
